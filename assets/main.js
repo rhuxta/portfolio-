@@ -47,16 +47,19 @@
     const count = document.querySelector('[data-count]');
     const prev = document.querySelector('[data-prev]'), next = document.querySelector('[data-next]');
     let i = 0;
-    bar.style.width = (100 / cards.length) + '%';
+    // índice = primeiro cartão visível (funciona com 1 cartão por ecrã no mobile e 3 no desktop)
     const update = () => {
-      bar.style.transform = `translateX(${i * 100}%)`;
+      const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
+      const max = track.scrollWidth - track.clientWidth;
+      i = Math.max(0, Math.min(cards.length - 1, Math.round(track.scrollLeft / step)));
+      bar.style.width = (100 * track.clientWidth / track.scrollWidth) + '%';
+      bar.style.transform = `translateX(${max > 0 ? (track.scrollLeft / track.clientWidth) * 100 : 0}%)`;
       count.textContent = `${String(i + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
-      prev.disabled = i === 0; next.disabled = i === cards.length - 1;
+      prev.disabled = track.scrollLeft <= 2; next.disabled = track.scrollLeft >= max - 2;
     };
-    const io = new IntersectionObserver((ents) => {
-      ents.forEach((e) => { if (e.isIntersecting) { i = cards.indexOf(e.target); update(); } });
-    }, { root: track, threshold: 0.6 });
-    cards.forEach((c) => io.observe(c));
+    let raf = 0;
+    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
     const go = (d) => cards[Math.max(0, Math.min(cards.length - 1, i + d))].scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'nearest', inline: 'start' });
     prev.addEventListener('click', () => go(-1)); next.addEventListener('click', () => go(1));
     update();
