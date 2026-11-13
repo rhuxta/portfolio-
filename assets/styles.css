@@ -219,3 +219,82 @@ ul{padding:0;list-style:none}
   .hero::after{background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,.35) 48%,rgba(0,0,0,.8) 72%,rgba(0,0,0,.95) 100%)}
   .hero__lede{color:var(--ink)}
 }
+
+/* =====================================================================
+   v5 — páginas de projeto com a cor dominante do banner + rodapé azul
+   As cores de cada página chegam por variáveis no <body> (geradas por
+   tools/v5/colors.py com verificação de contraste AA).
+   ===================================================================== */
+:root{--bg-rgb:0 0 0;--brand:#0000ff}
+.nav.is-solid{background:rgb(var(--bg-rgb) / .92)}
+.case{background:var(--bg);color:var(--ink)}
+.case :focus-visible{outline-color:var(--ink)}
+.case .btn--ghost{border-color:var(--mute)}
+
+/* ---------- Banner do projeto ---------- */
+.pb{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+.pb__media{position:absolute;inset:0 0 auto;height:72svh;z-index:-2}
+.pb__media picture,.pb__media img{display:block;width:100%;height:100%;object-fit:cover}
+.pb::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgb(var(--bg-rgb) / .6) 0%,rgb(var(--bg-rgb) / 0) 16%,rgb(var(--bg-rgb) / 0) 32%,rgb(var(--bg-rgb) / .82) 54%,var(--bg) 70%)}
+.pb__body{width:100%;padding:calc(var(--nav-h) + 24px) var(--pad) 32px}
+.pb .back{color:var(--ink);opacity:1}
+.pb__title{font-size:clamp(48px,14vw,128px);line-height:.92;font-weight:500;letter-spacing:-.04em;margin-top:4px;text-wrap:balance;overflow-wrap:break-word;hyphens:auto}
+.pb__meta{margin:28px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.pb__meta div{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);text-align:left}
+.pb__meta-lead{grid-column:1 / span 2}
+.pb__meta-year{grid-column:3}
+.pb__meta-full{grid-column:1 / -1}
+.pb__meta dt{color:var(--mute);font-size:13px;margin-bottom:2px}
+.pb__meta dd{margin:0;font-size:15px;line-height:1.4}
+
+/* ---------- Introdução ---------- */
+.pintro{padding:28px var(--pad) 64px;display:grid;gap:28px}
+.pintro__lede{font-size:20px;line-height:1.45;max-width:40ch;text-wrap:pretty}
+.pintro__spec{margin:0;padding-top:14px;border-top:1px solid var(--line)}
+.pintro__spec dt{color:var(--mute);font-size:13px;margin-bottom:4px}
+.pintro__spec dd{margin:0;font-size:15px;line-height:1.5}
+
+/* ---------- Galeria ---------- */
+.gal{display:grid;gap:32px;padding:0 var(--pad) 80px}
+.gal__item{margin:0}
+.gal__item img{display:block;width:100%;height:auto;border-radius:4px;background:rgb(0 0 0 / .18)}
+.gal__item figcaption{margin-top:10px;font-size:14px;color:var(--mute)}
+.gal__text{padding:24px 0}
+.gal__text h2{font-size:15px;color:var(--mute);font-weight:400;margin-bottom:12px}
+.gal__text p{font-size:21px;line-height:1.4;text-wrap:pretty;max-width:40ch}
+.case .reel{padding-top:0}
+
+/* ---------- Projeto seguinte = mesmo carrossel da home ---------- */
+.projects--next{background:var(--next-bg);--mute:var(--next-mute);--line:var(--next-line);padding-top:64px;padding-bottom:72px}
+.projects--next .card__img{background:rgb(0 0 0 / .2)}
+.projects--next .arrow{border-color:rgb(255 255 255 / .45)}
+
+/* ---------- Rodapé: versão anterior, agora azul com texto branco ---------- */
+.footer{background:var(--brand);color:#fff}
+.footer span{color:#fff}
+
+@media (min-width:900px){
+  .pb__media{height:100%}
+  .pb::after{background:
+    linear-gradient(0deg,var(--bg) 0%,rgb(var(--bg-rgb) / .9) 22%,rgb(var(--bg-rgb) / .35) 48%,rgb(var(--bg-rgb) / 0) 66%),
+    linear-gradient(180deg,rgb(var(--bg-rgb) / .55) 0%,rgb(var(--bg-rgb) / 0) 18%)}
+  .pb__body{display:grid;grid-template-columns:1.25fr 1fr;gap:64px;align-items:end;padding-bottom:56px}
+  .pb__meta{margin:0}
+  .pintro{grid-template-columns:2fr 1fr;gap:64px;padding:56px var(--pad) 96px;align-items:start}
+  .pintro__lede{font-size:30px;line-height:1.3;max-width:34ch}
+  .gal{grid-template-columns:1fr 1fr;gap:48px 32px;padding-bottom:120px}
+  .gal__item--b,.gal__text{grid-column:1/-1}
+  .gal__text{padding:40px 0}
+  .gal__text p{font-size:32px;line-height:1.3;max-width:32ch}
+  .projects--next{padding-top:96px;padding-bottom:112px}
+  .projects{padding-left:0;padding-right:0}
+}
+/* v5 autocrítica: logótipo do Cartoonito cortado no mobile → imagem inteira sobre a própria cor */
+@media (max-width:899px){.pb--contain .pb__media{top:var(--nav-h);height:52svh}.pb--contain .pb__media img{object-fit:contain;object-position:center}}
+@media (max-width:899px){
+  .pb--contain{min-height:0}
+  .pb--contain .pb__media{height:auto;bottom:auto}
+  .pb--contain .pb__media img{height:auto;aspect-ratio:auto;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
+  .pb--contain .pb__body{padding-top:calc(var(--nav-h) + 66.4vw + 8px)}
+}
