@@ -25,16 +25,18 @@
     addEventListener('keydown', (e) => { if (e.key === 'Escape' && root.classList.contains('menu-open')) { set(false); btn.focus(); } });
   }
 
-  // Vídeo do hero: pausa/retoma + respeita reduced-motion
+  // Vídeo do hero: loop contínuo (sem botão de pausa, decisão do Rhuston).
+  // Movimento reduzido ou poupança de dados: fica o poster. Pausa fora do ecrã.
   const video = document.querySelector('.hero video');
-  if (video && video.dataset.posterDesktop && matchMedia('(min-width:900px)').matches) video.poster = video.dataset.posterDesktop;
-  const vBtn = document.querySelector('.hero__ctrl');
-  if (video && vBtn) {
-    const sync = () => { vBtn.textContent = video.paused ? 'Reproduzir' : 'Pausar'; vBtn.setAttribute('aria-pressed', video.paused); };
-    const applyPref = () => { if (reduce.matches) { video.pause(); video.removeAttribute('autoplay'); } else { video.play().catch(() => {}); } sync(); };
-    vBtn.addEventListener('click', () => { video.paused ? video.play() : video.pause(); });
-    video.addEventListener('play', sync); video.addEventListener('pause', sync);
-    reduce.addEventListener('change', applyPref); applyPref();
+  if (video) {
+    if (video.dataset.posterDesktop && matchMedia('(min-width:900px)').matches) video.poster = video.dataset.posterDesktop;
+    const saveData = navigator.connection && navigator.connection.saveData;
+    const still = () => reduce.matches || saveData;
+    const apply = () => { if (still()) { video.pause(); video.removeAttribute('autoplay'); } else { video.play().catch(() => {}); } };
+    reduce.addEventListener('change', apply); apply();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => { if (still()) return; e.isIntersecting ? video.play().catch(() => {}) : video.pause(); }, { threshold: 0.15 }).observe(video);
+    }
   }
 
   // Carrossel: progresso + setas
