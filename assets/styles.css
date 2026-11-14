@@ -307,3 +307,34 @@ ul{padding:0;list-style:none}
   .pb--contain .pb__body{padding-top:calc(var(--nav-h) + 66.4vw + 8px)}
 }
 @media (min-width:900px){.footer .contact__links a{font-size:22px;min-height:72px}.footer .contact__line{font-size:22px}}
+
+/* =====================================================================
+   v9 — Projetos em scroll horizontal fixo (home, desktop) + tilt 3D nos cartões
+   ===================================================================== */
+/* Mobile e desktop: a secção fica fixa (sticky) e o scroll vertical desliza a faixa até ao último
+   projeto; depois a página continua. main.js liga .is-pinned com [data-pin] e sem movimento
+   reduzido (aí fica o swipe nativo). --pin-len = deslize × 0.55, para não arrastar. */
+.projects.is-pinned{height:calc(100svh + var(--pin-len,0px));padding-top:0;padding-bottom:0;view-timeline:--projetos block}
+.projects.is-pinned .projects__pin{position:sticky;top:0;height:100svh;overflow:clip;display:flex;flex-direction:column;justify-content:center;padding-top:var(--nav-h)}
+.projects.is-pinned .track{overflow:visible;scroll-snap-type:none;will-change:transform}
+@supports (animation-timeline:view()){
+  .projects.is-pinned .track{animation:projetos-deslize linear both;animation-timeline:--projetos;animation-range:contain 0% contain 100%}
+}
+/* Cartões ~84vw (espreita o seguinte); em ecrãs baixos encolhem para caber tudo com a legenda */
+@media (max-width:899px){
+  .projects.is-pinned .card{flex-basis:min(84vw,calc((100svh - var(--nav-h) - 250px) * .8))}
+  .projects.is-pinned .section__head{margin-bottom:20px}
+}
+@keyframes projetos-deslize{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-1 * var(--pin-dist,0px)),0,0)}}
+
+/* Tilt 3D (só rato): a legenda fica fora da camada inclinada; ângulos ≤8° e escala .97
+   durante a inclinação, para os cantos projetados nunca saírem da caixa do cartão. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .card__img{position:relative;transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--ts,1));transition:transform .6s var(--ease)}
+  .card__img.is-tilt{--ts:.97;transition:transform .15s linear}
+  .card .card__img.is-tilt img,.card:hover .card__img.is-tilt img{transform:translate3d(var(--tx,0px),var(--ty,0px),0) scale(1.08);transition:transform .15s linear}
+  .card__img::after{content:"";position:absolute;left:-50%;top:-50%;width:200%;height:200%;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at center,rgb(255 255 255 / .2),rgb(255 255 255 / 0) 40%);
+    transform:translate3d(var(--gx,0px),var(--gy,0px),0);transition:opacity .4s}
+  .card__img.is-tilt::after{opacity:1}
+}

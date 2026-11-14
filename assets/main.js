@@ -39,31 +39,119 @@
     }
   }
 
-  // Carrossel: progresso + setas
+  // Carrossel de projetos. Na home ([data-pin]), em mobile e desktop, a secção fica fixa (sticky)
+  // e o scroll vertical desliza os cartões na horizontal até ao último; depois a página continua.
+  // Sem scroll-jacking: o scroll é o nativo (com inércia), só a faixa se move por transform.
+  // Com movimento reduzido, ou sem [data-pin], fica o swipe nativo.
   const track = document.querySelector('.track');
   if (track) {
+    const sec = track.closest('.projects');
     const cards = [...track.children];
-    const bar = document.querySelector('.progress span');
-    const count = document.querySelector('[data-count]');
-    const prev = document.querySelector('[data-prev]'), next = document.querySelector('[data-next]');
-    let i = 0;
-    // índice = primeiro cartão visível (funciona com 1 cartão por ecrã no mobile e 3 no desktop)
-    const update = () => {
-      const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
-      const max = track.scrollWidth - track.clientWidth;
-      i = Math.max(0, Math.min(cards.length - 1, Math.round(track.scrollLeft / step)));
-      bar.style.width = (100 * track.clientWidth / track.scrollWidth) + '%';
-      bar.style.transform = `translateX(${max > 0 ? (track.scrollLeft / track.clientWidth) * 100 : 0}%)`;
-      count.textContent = `${String(i + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
-      prev.disabled = track.scrollLeft <= 2; next.disabled = track.scrollLeft >= max - 2;
+    const bar = sec.querySelector('.progress span');
+    const count = sec.querySelector('[data-count]');
+    const prev = sec.querySelector('[data-prev]'), next = sec.querySelector('[data-next]');
+    const total = String(cards.length).padStart(2, '0');
+    const K = 0.55; // px de scroll vertical por px de deslize: ~45% menos scroll extra que 1:1
+    const sda = !!(window.CSS && CSS.supports('animation-timeline: view()'));
+    let pinned = false, dist = 0, i = 0, raf = 0;
+    const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+    const step = () => (cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1);
+    const padL = () => parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    const render = (pos, max) => {
+      const vis = pinned ? track.clientWidth / (track.clientWidth + dist) : track.clientWidth / track.scrollWidth;
+      const n = clamp(Math.round(pos / step()), 0, cards.length - 1);
+      bar.style.width = vis * 100 + '%';
+      bar.style.transform = `translateX(${max > 0 ? (pos / max) * ((1 - vis) / vis) * 100 : 0}%)`;
+      if (n !== i || !count.textContent.endsWith(total)) { i = n; count.textContent = `${String(i + 1).padStart(2, '0')} / ${total}`; }
+      prev.disabled = pos <= 2; next.disabled = pos >= max - 2;
     };
-    let raf = 0;
-    track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
-    window.addEventListener('resize', update);
-    const go = (d) => cards[Math.max(0, Math.min(cards.length - 1, i + d))].scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'nearest', inline: 'start' });
-    prev.addEventListener('click', () => go(-1)); next.addEventListener('click', () => go(1));
-    update();
+    const pinPos = () => clamp(-sec.getBoundingClientRect().top / (dist * K || 1), 0, 1) * dist;
+    const update = () => {
+      raf = 0;
+      if (!pinned) return render(track.scrollLeft, track.scrollWidth - track.clientWidth);
+      const pos = pinPos();
+      if (!sda) track.style.transform = `translate3d(${-pos.toFixed(1)}px,0,0)`;
+      render(pos, dist);
+    };
+    const queue = () => { if (!raf) raf = requestAnimationFrame(update); };
+    const measure = () => {
+      if (!pinned) return;
+      const last = cards[cards.length - 1]; // até o último cartão encostar à margem direita (não ao bordo do ecrã)
+      dist = Math.max(0, Math.round(last.offsetLeft + last.offsetWidth + (parseFloat(getComputedStyle(track).paddingRight) || 0) - track.clientWidth));
+      sec.style.setProperty('--pin-dist', dist + 'px');
+      sec.style.setProperty('--pin-len', Math.round(dist * K) + 'px');
+    };
+    const setPinned = () => {
+      const on = sec.hasAttribute('data-pin') && !reduce.matches;
+      if (on === pinned) { measure(); update(); return; }
+      pinned = on;
+      sec.classList.toggle('is-pinned', on);
+      track.style.transform = '';
+      if (!on) { sec.style.removeProperty('--pin-dist'); sec.style.removeProperty('--pin-len'); }
+      measure(); update();
+    };
+    // Leva o cartão n ao início da faixa: desliza a faixa (swipe) ou desce a página (modo fixo)
+    const show = (n, instant) => {
+      const card = cards[clamp(n, 0, cards.length - 1)];
+      const behavior = instant || reduce.matches ? 'instant' : 'smooth';
+      if (!pinned) return card.scrollIntoView({ behavior, block: 'nearest', inline: 'start' });
+      const pos = clamp(card.offsetLeft - padL(), 0, dist);
+      scrollTo({ top: sec.getBoundingClientRect().top + scrollY + pos * K, behavior });
+    };
+    prev.addEventListener('click', () => show(i - 1)); next.addEventListener('click', () => show(i + 1));
+    // Teclado: um cartão fora do ecrã que recebe foco passa a estar visível
+    track.addEventListener('focusin', (e) => {
+      const card = e.target.closest('.card'); if (!card || !pinned) return;
+      const r = card.getBoundingClientRect();
+      if (r.left < 0 || r.right > innerWidth) show(cards.indexOf(card), true);
+    });
+    track.addEventListener('scroll', queue, { passive: true });
+    addEventListener('scroll', () => { if (pinned) queue(); }, { passive: true });
+    addEventListener('resize', () => { measure(); queue(); });
+    reduce.addEventListener('change', setPinned);
+    setPinned();
   }
+
+  // Cartões: inclinação 3D com reflexo e a imagem a deslizar ao contrário (só com rato).
+  // No toque, a imagem faz uma paralaxe suave com o swipe. Nada disto corre com movimento reduzido.
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('.card[href] .card__img').forEach((el) => {
+    const card = el.closest('.card');
+    let on = false, x = 0, y = 0, raf = 0;
+    const paint = () => {
+      raf = 0; if (!on) return;
+      const r = el.getBoundingClientRect(); // lido a cada frame: a faixa pode estar a deslizar por baixo do rato
+      const px = clamp01((x - r.left) / r.width) - 0.5, py = clamp01((y - r.top) / r.height) - 0.5;
+      el.style.setProperty('--rx', (-py * 7).toFixed(2) + 'deg');
+      el.style.setProperty('--ry', (px * 8).toFixed(2) + 'deg');
+      el.style.setProperty('--tx', (-px * 14).toFixed(1) + 'px');
+      el.style.setProperty('--ty', (-py * 14).toFixed(1) + 'px');
+      el.style.setProperty('--gx', (px * r.width).toFixed(0) + 'px');
+      el.style.setProperty('--gy', (py * r.height).toFixed(0) + 'px');
+    };
+    const queue = () => { if (on && !raf) raf = requestAnimationFrame(paint); };
+    card.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'mouse' || !fine.matches || reduce.matches) return; on = true; el.classList.add('is-tilt'); x = e.clientX; y = e.clientY; queue(); });
+    card.addEventListener('pointermove', (e) => { x = e.clientX; y = e.clientY; queue(); });
+    card.addEventListener('pointerleave', () => { on = false; el.classList.remove('is-tilt'); ['--rx', '--ry', '--tx', '--ty'].forEach((v) => el.style.removeProperty(v)); });
+    addEventListener('scroll', queue, { passive: true });
+  });
+  function clamp01(v) { return Math.min(1, Math.max(0, v)); }
+  document.querySelectorAll('.track').forEach((t) => {
+    const imgs = [...t.querySelectorAll('.card__img img')];
+    let raf = 0;
+    const drift = () => {
+      raf = 0;
+      if (fine.matches || reduce.matches) { imgs.forEach((im) => { im.style.transform = ''; }); return; }
+      const tr = t.getBoundingClientRect(), cx = tr.left + tr.width / 2;
+      const d = imgs.map((im) => { const r = im.parentElement.getBoundingClientRect(); return (r.left + r.width / 2 - cx) / tr.width; });
+      imgs.forEach((im, k) => { im.style.transform = `translate3d(${(-d[k] * 8).toFixed(2)}%,0,0) scale(1.12)`; });
+    };
+    const q = () => { if (!raf) raf = requestAnimationFrame(drift); };
+    t.addEventListener('scroll', q, { passive: true });
+    if (t.closest('[data-pin]')) addEventListener('scroll', q, { passive: true }); // no modo fixo a faixa move-se com o scroll da página
+    fine.addEventListener('change', drift); reduce.addEventListener('change', drift);
+    drift();
+  });
 
   // Competências: toque para abrir (um de cada vez)
   document.querySelectorAll('.skill__btn').forEach((b) => {
