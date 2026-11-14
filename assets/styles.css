@@ -87,16 +87,17 @@ ul{padding:0;list-style:none}
 /* ---------- PROJECTS CAROUSEL ---------- */
 .projects{padding-left:0;padding-right:0}
 .projects .section__head{padding:0 var(--pad)}
-.track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);padding:0 var(--pad) 8px;
+.track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);padding:0 var(--pad) 8px;
   overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .track::-webkit-scrollbar{display:none}
 .card{flex:0 0 80%;scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
 .card__img{aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:#111}
 .card__img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.card__cap{display:flex;justify-content:space-between;gap:12px;padding-top:12px}
-.card__title{font-size:19px;font-weight:500;line-height:1.2}
+.card__cap{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;align-items:baseline;padding-top:12px}
+.card__cap>div:first-child{display:contents} /* título e ano na mesma linha de base; etiqueta por baixo */
+.card__title{font-size:19px;font-weight:500;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .card__meta{color:var(--mute);font-size:14px;text-align:right;white-space:nowrap}
-.card__tag{display:inline-block;margin-top:4px;font-size:13px;color:var(--blue-ink)}
+.card__tag{grid-column:1 / -1;grid-row:2;display:block;margin-top:4px;font-size:13px;line-height:1.3;color:var(--blue-ink)}
 .track-ctrl{display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad) 0}
 .progress{flex:1;height:2px;background:var(--line);margin-right:20px;position:relative;overflow:hidden}
 .progress span{position:absolute;inset:0 auto 0 0;width:14.28%;background:var(--ink);transition:transform .3s var(--ease)}
@@ -314,18 +315,14 @@ ul{padding:0;list-style:none}
 /* Mobile e desktop: a secção fica fixa (sticky) e o scroll vertical desliza a faixa até ao último
    projeto; depois a página continua. main.js liga .is-pinned com [data-pin] e sem movimento
    reduzido (aí fica o swipe nativo). --pin-len = deslize × 0.55, para não arrastar. */
-.projects.is-pinned{height:calc(100svh + var(--pin-len,0px));padding-top:0;padding-bottom:0;view-timeline:--projetos block}
+.projects.is-pinned{height:calc(100svh + var(--pin-len,0px));padding-top:0;padding-bottom:0}
 .projects.is-pinned .projects__pin{position:sticky;top:0;height:100svh;overflow:clip;display:flex;flex-direction:column;justify-content:center;padding-top:var(--nav-h)}
 .projects.is-pinned .track{overflow:visible;scroll-snap-type:none;will-change:transform}
-@supports (animation-timeline:view()){
-  .projects.is-pinned .track{animation:projetos-deslize linear both;animation-timeline:--projetos;animation-range:contain 0% contain 100%}
-}
 /* Cartões ~84vw (espreita o seguinte); em ecrãs baixos encolhem para caber tudo com a legenda */
 @media (max-width:899px){
   .projects.is-pinned .card{flex-basis:min(84vw,calc((100svh - var(--nav-h) - 250px) * .8))}
   .projects.is-pinned .section__head{margin-bottom:20px}
 }
-@keyframes projetos-deslize{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-1 * var(--pin-dist,0px)),0,0)}}
 
 /* Tilt 3D (só rato): a legenda fica fora da camada inclinada; ângulos ≤8° e escala .97
    durante a inclinação, para os cantos projetados nunca saírem da caixa do cartão. */
