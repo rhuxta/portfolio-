@@ -98,3 +98,5 @@
     linear-gradient(180deg,rgb(var(--bg-rgb) / .5) 0%,rgb(var(--bg-rgb) / 0) 16%),
     rgb(var(--bg-rgb) / .16)}
 }
+/* Faixa 900–1199px (iPad horizontal, portáteis pequenos): a ficha cabe na 1.ª dobra (decisão do Rhuston, 23 nov.) */
+@media (min-width:900px) and (max-width:1199px){.ph__lede{font-size:19px;line-height:1.36}.ph__grid{row-gap:clamp(32px,6vh,64px)}}
