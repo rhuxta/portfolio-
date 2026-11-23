@@ -90,11 +90,11 @@
   .ph--contain .ph__grid{padding-top:calc(53.5vw - 150px)}
 }
 /* The State of Doing: a 1280×720 o rótulo «Projeto» ficava a 4,43:1 sobre o ecrã do telemóvel.
-   Camada lateral +0,04 (regra das instruções: só a lateral, em passos de 0,04) */
+   Camada lateral +0,08 (regra das instruções: só a lateral, em passos de 0,04; +0,04 dava 4,57, abaixo da meta de 4,64) */
 @media (min-width:900px){
   .ph--side-up .ph__shade{background:
     linear-gradient(0deg,var(--bg) 0%,rgb(var(--bg-rgb) / .94) 12%,rgb(var(--bg-rgb) / .6) 26%,rgb(var(--bg-rgb) / .12) 46%,rgb(var(--bg-rgb) / 0) 60%),
-    linear-gradient(90deg,rgb(var(--bg-rgb) / .74) 0%,rgb(var(--bg-rgb) / .6) 32%,rgb(var(--bg-rgb) / .2) 52%,rgb(var(--bg-rgb) / 0) 64%),
+    linear-gradient(90deg,rgb(var(--bg-rgb) / .78) 0%,rgb(var(--bg-rgb) / .64) 32%,rgb(var(--bg-rgb) / .24) 52%,rgb(var(--bg-rgb) / 0) 64%),
     linear-gradient(180deg,rgb(var(--bg-rgb) / .5) 0%,rgb(var(--bg-rgb) / 0) 16%),
     rgb(var(--bg-rgb) / .16)}
 }
