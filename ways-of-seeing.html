@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ways of Seeing — Israel Rhuston</title>
 <meta name="description" content="O projeto consistiu no desenvolvimento da identidade visual para o ciclo de cinema “Ways of Seeing”, promovido pelo Cinema Ideal, a partir da reposição da…">
-<meta name="theme-color" content="#535352">
+<meta name="theme-color" content="#0b0b0c">
 <link rel="canonical" href="https://israelrhuston.design-etic.pt/ways-of-seeing.html">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_PT">
@@ -18,12 +18,17 @@
 <link rel="icon" href="assets/svg/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-<link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/banner-ways-of-seeing-800.avif 800w, assets/img/banner-ways-of-seeing-1200.avif 1200w, assets/img/banner-ways-of-seeing-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" media="(min-width:900px)" imagesrcset="assets/img/hero-ways-of-seeing-1200.avif 1200w, assets/img/hero-ways-of-seeing-1600.avif 1600w, assets/img/hero-ways-of-seeing-2400.avif 2400w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" media="(max-width:899px)" imagesrcset="assets/img/hero-ways-of-seeing-m-480.avif 480w, assets/img/hero-ways-of-seeing-m-780.avif 780w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="assets/fonts/TRTINTERVAL-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Ways of Seeing", "dateCreated": "2025", "inLanguage": "pt-PT", "description": "O projeto consistiu no desenvolvimento da identidade visual para o ciclo de cinema “Ways of Seeing”, promovido pelo Cinema Ideal, a partir da reposição da série documental de John Berger. A proposta explorou uma abordagem experimental e processual, articulando referências da história da arte, cultura visual e comunicação contemporânea, com especial atenção ao uso consciente de tipografia, imagem e legibilidade.", "image": "https://israelrhuston.design-etic.pt/assets/img/og-ways-of-seeing.jpg", "url": "https://israelrhuston.design-etic.pt/ways-of-seeing.html", "creator": {"@type": "Person", "name": "Israel Rhuston", "url": "https://israelrhuston.design-etic.pt/"}}</script>
+<link rel="stylesheet" href="assets/case.css">
+<link rel="stylesheet" href="assets/reveal.css">
+<!-- Revelação: só esconde se houver JS e movimento permitido; se reveal.js não arrancar em 2,5 s, mostra tudo -->
+<script>(function(d){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('rv-on');setTimeout(function(){if(!window.__rv)d.classList.remove('rv-on')},2500)})(document.documentElement)</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Ways of Seeing", "dateCreated": "2024", "inLanguage": "pt-PT", "description": "O projeto consistiu no desenvolvimento da identidade visual para o ciclo de cinema “Ways of Seeing”, promovido pelo Cinema Ideal, a partir da reposição da série documental de John Berger. A proposta explorou uma abordagem experimental e processual, articulando referências da história da arte, cultura visual e comunicação contemporânea, com especial atenção ao uso consciente de tipografia, imagem e legibilidade.", "image": "https://israelrhuston.design-etic.pt/assets/img/og-ways-of-seeing.jpg", "url": "https://israelrhuston.design-etic.pt/ways-of-seeing.html", "creator": {"@type": "Person", "name": "Israel Rhuston", "url": "https://israelrhuston.design-etic.pt/"}}</script>
 </head>
-<body class="case" style="--black:#535352;--bg:#535352;--bg-rgb:83 83 82;--ink:#ffffff;--mute:#dedede;--line:#6f6e6e;--next-bg:#444443;--next-mute:#cbcbca;--next-line:#666565;--blue-ink:#ffffff">
+<body class="case" style="--black:#0b0b0c;--bg:#0b0b0c;--bg-rgb:11 11 12;--ink:#f5f5f2;--mute:#b3b3b3;--line:#2e2e2e;--next-bg:#000;--next-mute:#a3a3a3;--next-line:#2a2a2a;--blue-ink:#8c8cff">
 <a class="skip" href="#conteudo">Saltar para o conteúdo</a>
 
 <header class="nav">
@@ -55,59 +60,89 @@
 </div>
 
 <main id="conteudo">
-  <section class="pb" aria-labelledby="pb-t">
-    <div class="pb__media"><picture><source type="image/avif" srcset="assets/img/banner-ways-of-seeing-800.avif 800w, assets/img/banner-ways-of-seeing-1200.avif 1200w, assets/img/banner-ways-of-seeing-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="assets/img/banner-ways-of-seeing-800.webp 800w, assets/img/banner-ways-of-seeing-1200.webp 1200w, assets/img/banner-ways-of-seeing-1600.webp 1600w" sizes="100vw"><img src="assets/img/banner-ways-of-seeing-800.webp" width="1600" height="1067" alt="" fetchpriority="high"></picture></div>
-    <div class="pb__body">
-      <div class="pb__head">
-        <a class="back" href="index.html#projetos"><span aria-hidden="true">&#8592;</span>&nbsp;Projetos</a>
-        <h1 class="pb__title" id="pb-t">Ways of Seeing</h1>
+  <section class="ph" aria-labelledby="ph-t">
+    <picture class="ph__media">
+      <source media="(max-width:899px)" type="image/avif" srcset="assets/img/hero-ways-of-seeing-m-480.avif 480w, assets/img/hero-ways-of-seeing-m-780.avif 780w" sizes="100vw">
+      <source media="(max-width:899px)" type="image/webp" srcset="assets/img/hero-ways-of-seeing-m-480.webp 480w, assets/img/hero-ways-of-seeing-m-780.webp 780w" sizes="100vw">
+      <source type="image/avif" srcset="assets/img/hero-ways-of-seeing-800.avif 800w, assets/img/hero-ways-of-seeing-1200.avif 1200w, assets/img/hero-ways-of-seeing-1600.avif 1600w, assets/img/hero-ways-of-seeing-2400.avif 2400w" sizes="100vw">
+      <img src="assets/img/hero-ways-of-seeing-1200.webp" srcset="assets/img/hero-ways-of-seeing-800.webp 800w, assets/img/hero-ways-of-seeing-1200.webp 1200w, assets/img/hero-ways-of-seeing-1600.webp 1600w" sizes="100vw" width="1600" height="1067" alt="Folhas de sala de Ways of Seeing abertas sobre fundo cinzento" fetchpriority="high">
+    </picture>
+    <div class="ph__shade" aria-hidden="true"></div>
+    <div class="ph__grid g12">
+      <div class="ph__about">
+        <h1 class="ph__name" id="ph-t" data-reveal="soft">Ways of Seeing</h1>
+        <p class="ph__lede" data-reveal="soft">O projeto consistiu no desenvolvimento da identidade visual para o ciclo de cinema “Ways of Seeing”, promovido pelo Cinema Ideal, a partir da reposição da série documental de John Berger. A proposta explorou uma abordagem experimental e processual, articulando referências da história da arte, cultura visual e comunicação contemporânea, com especial atenção ao uso consciente de tipografia, imagem e legibilidade.</p>
       </div>
-      <dl class="pb__meta"><div class="pb__meta-lead"><dt>Cliente</dt><dd>Cinema Ideal — Ways of Seeing</dd></div><div class="pb__meta-year"><dt>Ano</dt><dd>2025</dd></div><div class="pb__meta-full"><dt>Projeto</dt><dd>Identidade gráfica, ilustração, projeto académico</dd></div></dl>
+      <dl class="ph__meta g12">
+        <div class="ph__m ph__m--client" data-reveal><dt>Cliente</dt><dd>Cinema Ideal — Ways of Seeing</dd></div>
+        <div class="ph__m ph__m--year" data-reveal><dt>Ano</dt><dd>2024</dd></div>
+        <div class="ph__m ph__m--project" data-reveal><dt>Projeto</dt><dd><ul><li>Identidade gráfica</li><li>Ilustração</li><li>Projeto académico</li></ul></dd></div>
+        <div class="ph__m ph__m--spec" data-reveal><dt>Especialidades</dt><dd><ul><li>Direção de arte</li><li>Branding e estratégia de marca</li><li>Tipografia e design tipográfico</li></ul></dd></div>
+      </dl>
     </div>
   </section>
 
-  <section class="pintro" aria-label="Sobre o projeto">
-    <p class="pintro__lede">O projeto consistiu no desenvolvimento da identidade visual para o ciclo de cinema “Ways of Seeing”, promovido pelo Cinema Ideal, a partir da reposição da série documental de John Berger. A proposta explorou uma abordagem experimental e processual, articulando referências da história da arte, cultura visual e comunicação contemporânea, com especial atenção ao uso consciente de tipografia, imagem e legibilidade.</p>
-    <dl class="pintro__spec"><dt>Especialidades</dt><dd>Direção de arte, branding e estratégia de marca, tipografia e design tipográfico</dd></dl>
+  <section class="pg g12" id="galeria" aria-label="Galeria do projeto">
+    <figure class="pg__item pg__item--b" data-reveal>
+      <div class="pg__img"><picture><source type="image/avif" srcset="assets/img/g-ways-02-640.avif 640w, assets/img/g-ways-02-960.avif 960w, assets/img/g-ways-02-1280.avif 1280w" sizes="(min-width:900px) calc(100vw - 96px), calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-02-640.webp 640w, assets/img/g-ways-02-960.webp 960w, assets/img/g-ways-02-1280.webp 1280w" sizes="(min-width:900px) calc(100vw - 96px), calc(100vw - 40px)"><img src="assets/img/g-ways-02-960.webp" width="1280" height="853" alt="Ways of Seeing, cartaz em contexto urbano" loading="lazy" decoding="async"></picture></div>
+      <figcaption>Cartaz em contexto urbano</figcaption>
+    </figure>
+    <div class="pg__text">
+      <h2 data-reveal="soft">Sobre o projeto</h2>
+      <p data-reveal="soft">O sistema gráfico foi desenvolvido a partir de um cartaz-base, feito com dicotomias, e expandido para diferentes suportes de comunicação do ciclo, criando uma identidade coerente capaz de refletir o carácter crítico e visualmente híbrido da obra original.</p>
+    </div>
+    <figure class="pg__item pg__item--s" data-reveal>
+      <div class="pg__img"><picture><source type="image/avif" srcset="assets/img/g-ways-01-640.avif 640w, assets/img/g-ways-01-960.avif 960w, assets/img/g-ways-01-1280.avif 1280w" sizes="(min-width:900px) calc(50vw - 60px), calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-01-640.webp 640w, assets/img/g-ways-01-960.webp 960w, assets/img/g-ways-01-1280.webp 1280w" sizes="(min-width:900px) calc(50vw - 60px), calc(100vw - 40px)"><img src="assets/img/g-ways-01-960.webp" width="1280" height="853" alt="Ways of Seeing, cartaz" loading="lazy" decoding="async"></picture></div>
+      <figcaption>Cartaz</figcaption>
+    </figure>
+    <figure class="pg__item pg__item--s" data-reveal>
+      <div class="pg__img"><picture><source type="image/avif" srcset="assets/img/g-ways-03-640.avif 640w, assets/img/g-ways-03-960.avif 960w, assets/img/g-ways-03-1280.avif 1280w" sizes="(min-width:900px) calc(50vw - 60px), calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-03-640.webp 640w, assets/img/g-ways-03-960.webp 960w, assets/img/g-ways-03-1280.webp 1280w" sizes="(min-width:900px) calc(50vw - 60px), calc(100vw - 40px)"><img src="assets/img/g-ways-03-960.webp" width="1280" height="853" alt="Ways of Seeing, folha de sala, frente" loading="lazy" decoding="async"></picture></div>
+      <figcaption>Folha de sala, frente</figcaption>
+    </figure>
+    <figure class="pg__item pg__item--s" data-reveal>
+      <div class="pg__img"><picture><source type="image/avif" srcset="assets/img/g-ways-04-640.avif 640w, assets/img/g-ways-04-960.avif 960w, assets/img/g-ways-04-1280.avif 1280w" sizes="(min-width:900px) calc(50vw - 60px), calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-04-640.webp 640w, assets/img/g-ways-04-960.webp 960w, assets/img/g-ways-04-1280.webp 1280w" sizes="(min-width:900px) calc(50vw - 60px), calc(100vw - 40px)"><img src="assets/img/g-ways-04-960.webp" width="1280" height="853" alt="Ways of Seeing, folha de sala, verso" loading="lazy" decoding="async"></picture></div>
+      <figcaption>Folha de sala, verso</figcaption>
+    </figure>
+    <figure class="pg__item pg__item--b" data-reveal>
+      <div class="pg__img"><picture><source type="image/avif" srcset="assets/img/g-ways-05-640.avif 640w, assets/img/g-ways-05-960.avif 960w, assets/img/g-ways-05-1280.avif 1280w" sizes="(min-width:900px) calc(100vw - 96px), calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-05-640.webp 640w, assets/img/g-ways-05-960.webp 960w, assets/img/g-ways-05-1280.webp 1280w" sizes="(min-width:900px) calc(100vw - 96px), calc(100vw - 40px)"><img src="assets/img/g-ways-05-960.webp" width="1280" height="853" alt="Ways of Seeing, conjunto folha de sala" loading="lazy" decoding="async"></picture></div>
+      <figcaption>Conjunto folha de sala</figcaption>
+    </figure>
   </section>
 
-  <section class="gal" aria-label="Galeria do projeto">
-    <figure class="gal__item gal__item--b"><picture><source type="image/avif" srcset="assets/img/g-ways-02-640.avif 640w, assets/img/g-ways-02-960.avif 960w, assets/img/g-ways-02-1280.avif 1280w" sizes="(min-width:900px) 92vw, calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-02-640.webp 640w, assets/img/g-ways-02-960.webp 960w, assets/img/g-ways-02-1280.webp 1280w" sizes="(min-width:900px) 92vw, calc(100vw - 40px)"><img src="assets/img/g-ways-02-640.webp" width="1280" height="853" alt="Ways of Seeing — cartaz" loading="lazy" decoding="async"></picture><figcaption>Cartaz</figcaption></figure>
-    <div class="gal__text"><h2>Sobre o projeto</h2><p>O sistema gráfico foi desenvolvido a partir de um cartaz-base, feito com dicotomias, e expandido para diferentes suportes de comunicação do ciclo, criando uma identidade coerente capaz de refletir o carácter crítico e visualmente híbrido da obra original.</p></div>
-    <figure class="gal__item gal__item--s"><picture><source type="image/avif" srcset="assets/img/g-ways-01-640.avif 640w, assets/img/g-ways-01-960.avif 960w, assets/img/g-ways-01-1280.avif 1280w" sizes="(min-width:900px) 46vw, calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-01-640.webp 640w, assets/img/g-ways-01-960.webp 960w, assets/img/g-ways-01-1280.webp 1280w" sizes="(min-width:900px) 46vw, calc(100vw - 40px)"><img src="assets/img/g-ways-01-640.webp" width="1280" height="853" alt="Ways of Seeing — cartaz" loading="lazy" decoding="async"></picture><figcaption>Cartaz</figcaption></figure>
-    <figure class="gal__item gal__item--s"><picture><source type="image/avif" srcset="assets/img/g-ways-03-640.avif 640w, assets/img/g-ways-03-960.avif 960w, assets/img/g-ways-03-1280.avif 1280w" sizes="(min-width:900px) 46vw, calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-03-640.webp 640w, assets/img/g-ways-03-960.webp 960w, assets/img/g-ways-03-1280.webp 1280w" sizes="(min-width:900px) 46vw, calc(100vw - 40px)"><img src="assets/img/g-ways-03-640.webp" width="1280" height="853" alt="Ways of Seeing — folha de sala — frente" loading="lazy" decoding="async"></picture><figcaption>Folha de sala — frente</figcaption></figure>
-    <figure class="gal__item gal__item--s"><picture><source type="image/avif" srcset="assets/img/g-ways-04-640.avif 640w, assets/img/g-ways-04-960.avif 960w, assets/img/g-ways-04-1280.avif 1280w" sizes="(min-width:900px) 46vw, calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-04-640.webp 640w, assets/img/g-ways-04-960.webp 960w, assets/img/g-ways-04-1280.webp 1280w" sizes="(min-width:900px) 46vw, calc(100vw - 40px)"><img src="assets/img/g-ways-04-640.webp" width="1280" height="853" alt="Ways of Seeing — folha de sala — verso" loading="lazy" decoding="async"></picture><figcaption>Folha de sala — verso</figcaption></figure>
-    <figure class="gal__item gal__item--b"><picture><source type="image/avif" srcset="assets/img/g-ways-05-640.avif 640w, assets/img/g-ways-05-960.avif 960w, assets/img/g-ways-05-1280.avif 1280w" sizes="(min-width:900px) 92vw, calc(100vw - 40px)"><source type="image/webp" srcset="assets/img/g-ways-05-640.webp 640w, assets/img/g-ways-05-960.webp 960w, assets/img/g-ways-05-1280.webp 1280w" sizes="(min-width:900px) 92vw, calc(100vw - 40px)"><img src="assets/img/g-ways-05-640.webp" width="1280" height="853" alt="Ways of Seeing — conjunto folha de sala" loading="lazy" decoding="async"></picture><figcaption>Conjunto folha de sala</figcaption></figure>
-  </section>
-
-  <section class="section projects projects--next" aria-roledescription="carrossel" aria-labelledby="more-t">
-    <div class="section__head"><h2 class="section__title" id="more-t">Projeto seguinte</h2><span class="section__aside" data-count aria-live="polite">01 / 05</span></div>
+  <section class="section projects projects--next" id="projetos" data-pin aria-roledescription="carrossel" aria-labelledby="more-t">
+  <div class="projects__pin">
+    <div class="section__head" data-reveal><h2 class="section__title" id="more-t">Projetos</h2><span class="section__aside" data-count aria-live="polite">01 / 06</span></div>
     <div class="track" tabindex="0" aria-label="Lista de projetos, deslize para o lado">
       <a class="card" href="cartoonito.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-cartoonito-480.webp" srcset="assets/img/card-cartoonito-480.webp 480w, assets/img/card-cartoonito-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Mascote do Cartoonito animado sobre fundo azul"></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-cartoonito-480.webp" srcset="assets/img/card-cartoonito-480.webp 480w, assets/img/card-cartoonito-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Mascote do Cartoonito animado sobre fundo azul"></div>
         <div class="card__cap"><div><div class="card__title">Cartoonito</div><span class="card__tag">Rebranding, motion</span></div><div class="card__meta">2025</div></div>
       </a>
       <a class="card" href="state-of-doing.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-state-of-doing-480.webp" srcset="assets/img/card-state-of-doing-480.webp 480w, assets/img/card-state-of-doing-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Mão a segurar telemóvel com a app The State of Doing"></div>
-        <div class="card__cap"><div><div class="card__title">The State of Doing</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2025</div></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-state-of-doing-480.webp" srcset="assets/img/card-state-of-doing-480.webp 480w, assets/img/card-state-of-doing-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Mão a segurar telemóvel com a app The State of Doing"></div>
+        <div class="card__cap"><div><div class="card__title">The State of Doing</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2026</div></div>
       </a>
+      <div class="card" role="group" aria-label="Reframe, em breve">
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-reframe-480.webp" srcset="assets/img/card-reframe-480.webp 480w, assets/img/card-reframe-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Revista Reframe aberta"></div>
+        <div class="card__cap"><div><div class="card__title">Reframe</div><span class="card__tag">Editorial, em breve</span></div><div class="card__meta">2026</div></div>
+      </div>
       <a class="card" href="nabo.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-nabo-480.webp" srcset="assets/img/card-nabo-480.webp 480w, assets/img/card-nabo-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Fachada com a identidade NABO"></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-nabo-480.webp" srcset="assets/img/card-nabo-480.webp 480w, assets/img/card-nabo-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Fachada com a identidade NABO"></div>
         <div class="card__cap"><div><div class="card__title">NABO</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2025</div></div>
       </a>
       <a class="card" href="sol-a-solo.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-sol-a-solo-480.webp" srcset="assets/img/card-sol-a-solo-480.webp 480w, assets/img/card-sol-a-solo-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Outdoor amarelo Sol a Solo"></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-sol-a-solo-480.webp" srcset="assets/img/card-sol-a-solo-480.webp 480w, assets/img/card-sol-a-solo-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Outdoor amarelo Sol a Solo"></div>
         <div class="card__cap"><div><div class="card__title">Sol a Solo</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2025</div></div>
       </a>
       <a class="card" href="uniapy.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-uniapy-480.webp" srcset="assets/img/card-uniapy-480.webp 480w, assets/img/card-uniapy-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Ícone da app UNIAPY no ecrã do telemóvel"></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-uniapy-480.webp" srcset="assets/img/card-uniapy-480.webp 480w, assets/img/card-uniapy-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Ícone da app UNIAPY no ecrã do telemóvel"></div>
         <div class="card__cap"><div><div class="card__title">UNIAPY</div><span class="card__tag">App mobile</span></div><div class="card__meta">2025</div></div>
       </a>
     </div>
-    <div class="track-ctrl">
+    <div class="track-ctrl" data-reveal="fade">
       <div class="progress" aria-hidden="true"><span></span></div>
       <div class="arrows"><button type="button" class="arrow" data-prev aria-label="Projeto anterior">&#8592;</button><button type="button" class="arrow" data-next aria-label="Projeto seguinte">&#8594;</button></div>
     </div>
+  </div>
   </section>
 </main>
 
@@ -129,5 +164,7 @@
   </div>
 </footer>
 <script src="assets/main.js" defer></script>
+<script src="assets/pin.js" defer></script>
+<script src="assets/reveal.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,16 @@
+/* =====================================================================
+   Revelação ao scroll — módulo partilhado (todas as páginas). Vision, nov. 2026.
+   Marcação: data-reveal | data-reveal="soft" (texto, com desfoque leve) | data-reveal="fade" (sem deslocamento)
+             data-reveal-delay="120" (ms extra, opcional). A cascata é automática (ordem de leitura).
+   Só existe com html.rv-on (posto no <head> se houver JS e movimento permitido) → sem JS tudo visível.
+   No fim da animação o reveal.js retira o atributo: o elemento volta às suas próprias transições.
+   ===================================================================== */
+:root{--rv-ease:cubic-bezier(.22,1,.36,1);--rv-y:24px;--rv-dur:1.2s;--rv-fade:.95s;--rv-blur:6px}
+.rv-on [data-reveal]{opacity:0;transform:translate3d(0,var(--rv-y),0)}
+.rv-on [data-reveal="fade"]{transform:none}
+.rv-on [data-reveal="soft"]{filter:blur(var(--rv-blur))}
+.rv-on [data-reveal].is-in{opacity:1;transform:translate3d(0,0,0);filter:blur(0);
+  transition:opacity var(--rv-fade) var(--rv-ease) var(--rv-d,0ms),
+             transform var(--rv-dur) var(--rv-ease) var(--rv-d,0ms),
+             filter var(--rv-fade) var(--rv-ease) var(--rv-d,0ms)}
+@media (prefers-reduced-motion:reduce){.rv-on [data-reveal]{opacity:1;transform:none;filter:none}}
