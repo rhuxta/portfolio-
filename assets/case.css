@@ -1,0 +1,72 @@
+/* =====================================================================
+   Página de projeto — estrutura da sol-a-solo.html original (12 colunas)
+   sobre os tokens do site atual (TRT Interval, --bg por projeto, --pad).
+   Protótipo Vision, nov. 2026. Só transform/opacity animados.
+   ===================================================================== */
+:root{--gap:12px;--ease-out:cubic-bezier(.16,1,.3,1)}
+@media (min-width:900px){:root{--gap:24px}}
+
+/* Grelha base: 12 colunas, margem = --pad (20 / 48), medianiz --gap (12 / 24) */
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+.case dl,.case dd{margin:0}
+
+/* ---------- HERO: banner de fundo + sombra que desce para a ficha ---------- */
+.ph{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;overflow:hidden}
+.ph__media,.ph__shade{position:absolute;inset:0}
+.ph__media{z-index:-2;bottom:auto;height:64svh}
+.ph__media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+/* Mobile: imagem ocupa o topo; a sombra fecha na cor do projeto antes do texto (AA sobre cor lisa) */
+.ph__shade{z-index:-1;pointer-events:none;background:
+  linear-gradient(180deg,rgb(var(--bg-rgb) / .5) 0,rgb(var(--bg-rgb) / 0) 14svh,rgb(var(--bg-rgb) / 0) 40svh,rgb(var(--bg-rgb) / .75) 54svh,var(--bg) 64svh)}
+.ph__grid{padding:calc(64svh - 72px) var(--pad) 28px;row-gap:40px}
+.ph__about{grid-column:1 / -1}
+.ph__name{font-size:13px;line-height:1.2;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:0 0 14px}
+.ph__lede{font-size:19px;line-height:1.4;letter-spacing:-.005em;text-wrap:pretty;max-width:40ch}
+.ph__meta{grid-column:1 / -1;row-gap:24px;padding-top:16px;border-top:1px solid var(--line)}
+.ph__m dt{font-size:12px;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.ph__m dd,.ph__m li{font-size:13px;line-height:1.5;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.ph__m--client{grid-column:1 / span 6}
+.ph__m--year{grid-column:10 / span 3}
+.ph__m--project{grid-column:1 / span 6}
+.ph__m--spec{grid-column:7 / span 6}
+
+/* ---------- GALERIA: grande = 12 col, pequena = 6 col, texto ao lado da 1.ª pequena ---------- */
+.pg{padding:56px var(--pad) 96px;row-gap:40px}
+.pg__item{margin:0;grid-column:1 / -1}
+.pg__img{overflow:hidden;background:rgb(0 0 0 / .18)}
+.pg__img img{display:block;width:100%;height:auto}
+.pg__item figcaption{margin-top:12px;font-size:12px;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.pg__text{grid-column:1 / -1;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:16px 0}
+.pg__text h2{font-size:12px;line-height:1.3;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.pg__text p{font-size:21px;line-height:1.4;text-wrap:pretty;max-width:36ch}
+
+/* Carrossel no fim da página: o mesmo da home (main.js liga .is-pinned por [data-pin]) */
+.projects--next.is-pinned{padding-top:0;padding-bottom:0}
+
+@media (min-width:900px){
+  .ph__media{bottom:0;height:auto}
+  .ph__media img{object-position:50% 100%}
+  /* Desktop: véu leve em todo o banner + sombra à esquerda (atrás do texto) + base que funde na cor */
+  .ph__shade{background:
+    linear-gradient(0deg,var(--bg) 0%,rgb(var(--bg-rgb) / .94) 12%,rgb(var(--bg-rgb) / .6) 26%,rgb(var(--bg-rgb) / .12) 46%,rgb(var(--bg-rgb) / 0) 60%),
+    linear-gradient(90deg,rgb(var(--bg-rgb) / .7) 0%,rgb(var(--bg-rgb) / .56) 32%,rgb(var(--bg-rgb) / .16) 52%,rgb(var(--bg-rgb) / 0) 64%),
+    linear-gradient(180deg,rgb(var(--bg-rgb) / .5) 0%,rgb(var(--bg-rgb) / 0) 16%),
+    rgb(var(--bg-rgb) / .16)}
+  .ph{min-height:max(100svh,640px)}
+  .ph__grid{flex:1;grid-template-rows:1fr auto;row-gap:clamp(48px,12vh,160px);padding:calc(var(--nav-h) + 48px) var(--pad) 40px}
+  .ph__about{grid-column:1 / span 5;align-self:end}
+  .ph__name{font-size:13px;margin-bottom:18px}
+  .ph__lede{font-size:clamp(22px,1.1vw + 8px,28px);line-height:1.32;max-width:none}
+  .ph__meta{align-self:end;padding-top:20px}
+  .ph__m--client{grid-column:1 / span 2}
+  .ph__m--year{grid-column:3 / span 2}
+  .ph__m--project{grid-column:7 / span 3}
+  .ph__m--spec{grid-column:10 / span 3}
+  .ph__m dd,.ph__m li{font-size:14px}
+  .pg{padding:48px var(--pad) 140px;row-gap:56px}
+  .pg__item--s{grid-column:span 6}
+  .pg__text{grid-column:1 / span 6;padding:0 calc(var(--gap) * 2) 0 0}
+  .pg__text p{font-size:clamp(24px,1.2vw + 8px,32px);line-height:1.32}
+  .pg__item figcaption{margin-top:16px}
+}
+/* Revelação: ver assets/reveal.css (módulo partilhado) */
