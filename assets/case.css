@@ -70,3 +70,21 @@
   .pg__item figcaption{margin-top:16px}
 }
 /* Revelação: ver assets/reveal.css (módulo partilhado) */
+
+/* ---------- Ajustes da implementação (Ultron, 23 nov. 2026) ---------- */
+/* Colaboração (The State of Doing): ocupa as colunas livres 5–6 da ficha */
+.ph__m--collab{grid-column:1 / span 6}
+@media (min-width:900px){.ph__m--collab{grid-column:5 / span 2}}
+/* Cartoonito: o logótipo não pode ser cortado (antiga .pb--contain, adaptada a .ph) */
+@media (max-width:899px){
+  .ph--contain{min-height:0}
+  .ph--contain .ph__media{top:var(--nav-h);height:auto}
+  .ph--contain .ph__media img{height:auto;object-fit:contain}
+  .ph--contain .ph__shade{background:linear-gradient(180deg,rgb(var(--bg-rgb) / 0) calc(var(--nav-h) + 38vw),var(--bg) calc(var(--nav-h) + 53.6vw))}
+  .ph--contain .ph__grid{padding-top:calc(var(--nav-h) + 53.6vw + 32px)}
+}
+@media (min-width:900px){.ph--contain .ph__media img{object-position:50% 50%}}
+@media (min-width:900px) and (max-aspect-ratio:7/5){
+  .ph--contain .ph__media{bottom:auto;height:auto}
+  .ph--contain .ph__media img{height:auto;object-fit:contain}
+}

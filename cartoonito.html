@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cartoonito — Israel Rhuston</title>
 <meta name="description" content="Esta é uma proposta de rebranding do canal Cartoonito, um canal infantil da Warner Bros.">
-<meta name="theme-color" content="#042c61">
+<meta name="theme-color" content="#0b0b0c">
 <link rel="canonical" href="https://israelrhuston.design-etic.pt/cartoonito.html">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_PT">
@@ -18,12 +18,17 @@
 <link rel="icon" href="assets/svg/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://player.vimeo.com">
-<link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/banner-cartoonito-800.avif 800w, assets/img/banner-cartoonito-1200.avif 1200w, assets/img/banner-cartoonito-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" media="(min-width:900px)" imagesrcset="assets/img/hero-cartoonito-1200.avif 1200w, assets/img/hero-cartoonito-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" media="(max-width:899px)" imagesrcset="assets/img/hero-cartoonito-m-480.avif 480w, assets/img/hero-cartoonito-m-780.avif 780w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" href="assets/fonts/TRTINTERVAL-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/case.css">
+<link rel="stylesheet" href="assets/reveal.css">
+<!-- Revelação: só esconde se houver JS e movimento permitido; se reveal.js não arrancar em 2,5 s, mostra tudo -->
+<script>(function(d){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('rv-on');setTimeout(function(){if(!window.__rv)d.classList.remove('rv-on')},2500)})(document.documentElement)</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Cartoonito", "dateCreated": "2025", "inLanguage": "pt-PT", "description": "Esta é uma proposta de rebranding do canal Cartoonito, um canal infantil da Warner Bros. Discovery, feito especialmente para crianças do pré-escolar. O objetivo é simples: criar um espaço de confiança e aprendizagem partilhada onde se entretém enquanto educa, estimulando cada criança a expressar-se, explorar o mundo e desenvolver empatia desde cedo.", "image": "https://israelrhuston.design-etic.pt/assets/img/og-cartoonito.jpg", "url": "https://israelrhuston.design-etic.pt/cartoonito.html", "creator": {"@type": "Person", "name": "Israel Rhuston", "url": "https://israelrhuston.design-etic.pt/"}}</script>
 </head>
-<body class="case" style="--black:#042c61;--bg:#042c61;--bg-rgb:4 44 97;--ink:#ffffff;--mute:#b9c4d3;--line:#2c4d7a;--next-bg:#053779;--next-mute:#b9c7da;--next-line:#325b91;--blue-ink:#ffffff">
+<body class="case" style="--black:#0b0b0c;--bg:#0b0b0c;--bg-rgb:11 11 12;--ink:#f5f5f2;--mute:#b3b3b3;--line:#2e2e2e;--next-bg:#000;--next-mute:#a3a3a3;--next-line:#2a2a2a;--blue-ink:#8c8cff">
 <a class="skip" href="#conteudo">Saltar para o conteúdo</a>
 
 <header class="nav">
@@ -55,24 +60,30 @@
 </div>
 
 <main id="conteudo">
-  <section class="pb pb--contain" aria-labelledby="pb-t">
-    <div class="pb__media"><picture><source type="image/avif" srcset="assets/img/banner-cartoonito-800.avif 800w, assets/img/banner-cartoonito-1200.avif 1200w, assets/img/banner-cartoonito-1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="assets/img/banner-cartoonito-800.webp 800w, assets/img/banner-cartoonito-1200.webp 1200w, assets/img/banner-cartoonito-1600.webp 1600w" sizes="100vw"><img src="assets/img/banner-cartoonito-800.webp" width="1600" height="1067" alt="" fetchpriority="high"></picture></div>
-    <div class="pb__body">
-      <div class="pb__head">
-        <a class="back" href="index.html#projetos"><span aria-hidden="true">&#8592;</span>&nbsp;Projetos</a>
-        <h1 class="pb__title" id="pb-t">Cartoonito</h1>
+  <section class="ph ph--contain" aria-labelledby="ph-t">
+    <picture class="ph__media">
+      <source media="(max-width:899px)" type="image/avif" srcset="assets/img/hero-cartoonito-m-480.avif 480w, assets/img/hero-cartoonito-m-780.avif 780w" sizes="100vw">
+      <source media="(max-width:899px)" type="image/webp" srcset="assets/img/hero-cartoonito-m-480.webp 480w, assets/img/hero-cartoonito-m-780.webp 780w" sizes="100vw">
+      <source type="image/avif" srcset="assets/img/hero-cartoonito-800.avif 800w, assets/img/hero-cartoonito-1200.avif 1200w, assets/img/hero-cartoonito-1600.avif 1600w" sizes="100vw">
+      <img src="assets/img/hero-cartoonito-1200.webp" srcset="assets/img/hero-cartoonito-800.webp 800w, assets/img/hero-cartoonito-1200.webp 1200w, assets/img/hero-cartoonito-1600.webp 1600w" sizes="100vw" width="1600" height="856" alt="Logótipo Cartoonito sobre fundo azul" fetchpriority="high">
+    </picture>
+    <div class="ph__shade" aria-hidden="true"></div>
+    <div class="ph__grid g12">
+      <div class="ph__about">
+        <h1 class="ph__name" id="ph-t" data-reveal="soft">Cartoonito</h1>
+        <p class="ph__lede" data-reveal="soft">Esta é uma proposta de rebranding do canal Cartoonito, um canal infantil da Warner Bros. Discovery, feito especialmente para crianças do pré-escolar. O objetivo é simples: criar um espaço de confiança e aprendizagem partilhada onde se entretém enquanto educa, estimulando cada criança a expressar-se, explorar o mundo e desenvolver empatia desde cedo.</p>
       </div>
-      <dl class="pb__meta"><div class="pb__meta-lead"><dt>Cliente</dt><dd>Cartoonito, Warner Bros. Discovery</dd></div><div class="pb__meta-year"><dt>Ano</dt><dd>2025</dd></div><div class="pb__meta-full"><dt>Projeto</dt><dd>Motion design, 3D e visualização digital, ilustração aplicada ao design, estratégia de comunicação visual, projeto académico</dd></div></dl>
+      <dl class="ph__meta g12">
+        <div class="ph__m ph__m--client" data-reveal><dt>Cliente</dt><dd>Cartoonito, Warner Bros. Discovery</dd></div>
+        <div class="ph__m ph__m--year" data-reveal><dt>Ano</dt><dd>2025</dd></div>
+        <div class="ph__m ph__m--project" data-reveal><dt>Projeto</dt><dd><ul><li>Motion design</li><li>3D e visualização digital</li><li>Ilustração aplicada ao design</li><li>Estratégia de comunicação visual</li><li>Projeto académico</li></ul></dd></div>
+        <div class="ph__m ph__m--spec" data-reveal><dt>Especialidades</dt><dd><ul><li>Direção de arte</li><li>Branding e estratégia de marca</li><li>Motion design</li></ul></dd></div>
+      </dl>
     </div>
   </section>
 
-  <section class="pintro" aria-label="Sobre o projeto">
-    <p class="pintro__lede">Esta é uma proposta de rebranding do canal Cartoonito, um canal infantil da Warner Bros. Discovery, feito especialmente para crianças do pré-escolar. O objetivo é simples: criar um espaço de confiança e aprendizagem partilhada onde se entretém enquanto educa, estimulando cada criança a expressar-se, explorar o mundo e desenvolver empatia desde cedo.</p>
-    <dl class="pintro__spec"><dt>Especialidades</dt><dd>Direção de arte, branding e estratégia de marca, motion design</dd></dl>
-  </section>
-
   <section class="reel" aria-label="Vinhetas">
-    <figure class="film">
+    <figure class="film" data-reveal>
       <div class="player" data-vimeo="1200497699" data-title="Vinheta de programação">
         <img loading="lazy" src="assets/img/cartoonito-programacao-640.webp" srcset="assets/img/cartoonito-programacao-640.webp 640w, assets/img/cartoonito-programacao-960.webp 960w, assets/img/cartoonito-programacao-1280.webp 1280w" sizes="(min-width:900px) 90vw, calc(100vw - 40px)" width="640" height="360" alt="">
         <button type="button"><span>Ver vinheta de programação</span></button>
@@ -81,11 +92,11 @@
     </figure>
 
     <div class="gal__text">
-      <h2>Sobre o cliente</h2>
-      <p>Para o projeto proposto, será mantido o conceito e algumas características gráficas já existentes, tais como a paleta cromática e os mascotes. A principal alteração será na própria identidade gráfica, adotando um grafismo com uma vertente mais infantil e que comunique com naturalidade com o seu público-alvo.</p>
+      <h2 data-reveal="soft">Sobre o cliente</h2>
+      <p data-reveal="soft">Para o projeto proposto, será mantido o conceito e algumas características gráficas já existentes, tais como a paleta cromática e os mascotes. A principal alteração será na própria identidade gráfica, adotando um grafismo com uma vertente mais infantil e que comunique com naturalidade com o seu público-alvo.</p>
     </div>
 
-    <figure class="film">
+    <figure class="film" data-reveal>
       <div class="player" data-vimeo="1200497698" data-title="Vinheta de continuidade">
         <img loading="lazy" src="assets/img/cartoonito-continuidade-640.webp" srcset="assets/img/cartoonito-continuidade-640.webp 640w, assets/img/cartoonito-continuidade-960.webp 960w, assets/img/cartoonito-continuidade-1280.webp 1280w" sizes="(min-width:900px) 90vw, calc(100vw - 40px)" width="640" height="360" alt="">
         <button type="button"><span>Ver vinheta de continuidade</span></button>
@@ -94,14 +105,14 @@
     </figure>
 
     <div class="pair">
-      <figure class="film">
+      <figure class="film" data-reveal>
         <div class="player" data-vimeo="1200497696" data-title="Vinheta de identidade">
           <img loading="lazy" src="assets/img/cartoonito-identidade-640.webp" srcset="assets/img/cartoonito-identidade-640.webp 640w, assets/img/cartoonito-identidade-960.webp 960w, assets/img/cartoonito-identidade-1280.webp 1280w" sizes="(min-width:900px) 60vw, calc(100vw - 40px)" width="640" height="360" alt="">
           <button type="button"><span>Ver vinheta de identidade</span></button>
         </div>
         <figcaption><span>Vinheta de identidade</span><span>0:11</span></figcaption>
       </figure>
-      <figure class="film">
+      <figure class="film" data-reveal>
         <div class="player player--v" data-vimeo="1200497697" data-title="Story para redes sociais">
           <img loading="lazy" src="assets/img/cartoonito-story-480.webp" width="480" height="853" alt="">
           <button type="button"><span>Ver story</span></button>
@@ -111,34 +122,40 @@
     </div>
   </section>
 
-  <section class="section projects projects--next" aria-roledescription="carrossel" aria-labelledby="more-t">
-    <div class="section__head"><h2 class="section__title" id="more-t">Projeto seguinte</h2><span class="section__aside" data-count aria-live="polite">01 / 05</span></div>
+  <section class="section projects projects--next" id="projetos" data-pin aria-roledescription="carrossel" aria-labelledby="more-t">
+  <div class="projects__pin">
+    <div class="section__head" data-reveal><h2 class="section__title" id="more-t">Projetos</h2><span class="section__aside" data-count aria-live="polite">01 / 06</span></div>
     <div class="track" tabindex="0" aria-label="Lista de projetos, deslize para o lado">
       <a class="card" href="state-of-doing.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-state-of-doing-480.webp" srcset="assets/img/card-state-of-doing-480.webp 480w, assets/img/card-state-of-doing-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Mão a segurar telemóvel com a app The State of Doing"></div>
-        <div class="card__cap"><div><div class="card__title">The State of Doing</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2025</div></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-state-of-doing-480.webp" srcset="assets/img/card-state-of-doing-480.webp 480w, assets/img/card-state-of-doing-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Mão a segurar telemóvel com a app The State of Doing"></div>
+        <div class="card__cap"><div><div class="card__title">The State of Doing</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2026</div></div>
       </a>
+      <div class="card" role="group" aria-label="Reframe, em breve">
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-reframe-480.webp" srcset="assets/img/card-reframe-480.webp 480w, assets/img/card-reframe-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Revista Reframe aberta"></div>
+        <div class="card__cap"><div><div class="card__title">Reframe</div><span class="card__tag">Editorial, em breve</span></div><div class="card__meta">2026</div></div>
+      </div>
       <a class="card" href="nabo.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-nabo-480.webp" srcset="assets/img/card-nabo-480.webp 480w, assets/img/card-nabo-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Fachada com a identidade NABO"></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-nabo-480.webp" srcset="assets/img/card-nabo-480.webp 480w, assets/img/card-nabo-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Fachada com a identidade NABO"></div>
         <div class="card__cap"><div><div class="card__title">NABO</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2025</div></div>
       </a>
       <a class="card" href="sol-a-solo.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-sol-a-solo-480.webp" srcset="assets/img/card-sol-a-solo-480.webp 480w, assets/img/card-sol-a-solo-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Outdoor amarelo Sol a Solo"></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-sol-a-solo-480.webp" srcset="assets/img/card-sol-a-solo-480.webp 480w, assets/img/card-sol-a-solo-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Outdoor amarelo Sol a Solo"></div>
         <div class="card__cap"><div><div class="card__title">Sol a Solo</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2025</div></div>
       </a>
       <a class="card" href="uniapy.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-uniapy-480.webp" srcset="assets/img/card-uniapy-480.webp 480w, assets/img/card-uniapy-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Ícone da app UNIAPY no ecrã do telemóvel"></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-uniapy-480.webp" srcset="assets/img/card-uniapy-480.webp 480w, assets/img/card-uniapy-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Ícone da app UNIAPY no ecrã do telemóvel"></div>
         <div class="card__cap"><div><div class="card__title">UNIAPY</div><span class="card__tag">App mobile</span></div><div class="card__meta">2025</div></div>
       </a>
       <a class="card" href="ways-of-seeing.html">
-        <div class="card__img"><img loading="lazy" src="assets/img/card-ways-of-seeing-480.webp" srcset="assets/img/card-ways-of-seeing-480.webp 480w, assets/img/card-ways-of-seeing-800.webp 800w" sizes="(min-width:900px) 28vw, 72vw" width="480" height="600" alt="Páginas impressas de Ways of Seeing"></div>
-        <div class="card__cap"><div><div class="card__title">Ways of Seeing</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2025</div></div>
+        <div class="card__img"><img loading="lazy" decoding="async" src="assets/img/card-ways-of-seeing-480.webp" srcset="assets/img/card-ways-of-seeing-480.webp 480w, assets/img/card-ways-of-seeing-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Páginas impressas de Ways of Seeing"></div>
+        <div class="card__cap"><div><div class="card__title">Ways of Seeing</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2024</div></div>
       </a>
     </div>
-    <div class="track-ctrl">
+    <div class="track-ctrl" data-reveal="fade">
       <div class="progress" aria-hidden="true"><span></span></div>
       <div class="arrows"><button type="button" class="arrow" data-prev aria-label="Projeto anterior">&#8592;</button><button type="button" class="arrow" data-next aria-label="Projeto seguinte">&#8594;</button></div>
     </div>
+  </div>
   </section>
 </main>
 
@@ -160,5 +177,7 @@
   </div>
 </footer>
 <script src="assets/main.js" defer></script>
+<script src="assets/pin.js" defer></script>
+<script src="assets/reveal.js" defer></script>
 </body>
 </html>

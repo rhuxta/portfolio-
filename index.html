@@ -20,6 +20,9 @@
 <link rel="preload" href="assets/fonts/TRTINTERVAL-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/showreel-poster-mobile-520.webp" as="image" media="(max-width:899px)" fetchpriority="high">
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/reveal.css">
+<!-- Revelação: só esconde se houver JS e movimento permitido; se reveal.js não arrancar em 2,5 s, mostra tudo -->
+<script>(function(d){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('rv-on');setTimeout(function(){if(!window.__rv)d.classList.remove('rv-on')},2500)})(document.documentElement)</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Israel Rhuston", "alternateName": "Israel Rhuston Monteiro da Silva", "jobTitle": "Editor de vídeo e grafista", "worksFor": {"@type": "Organization", "name": "Record TV Europa"}, "alumniOf": {"@type": "EducationalOrganization", "name": "ETIC"}, "address": {"@type": "PostalAddress", "addressLocality": "Cascais", "addressCountry": "PT"}, "knowsAbout": ["After Effects", "Premiere", "Photoshop", "Illustrator", "Figma", "Blender"], "email": "mailto:rhuston.business@gmail.com", "telephone": "+351926148175", "url": "https://israelrhuston.design-etic.pt/", "sameAs": ["https://www.instagram.com/israel_rhuston", "https://www.behance.net/israelsilva46", "https://www.linkedin.com/in/israel-rhuston-silva-551280191"]}</script>
 </head>
 <body>
@@ -76,18 +79,18 @@
   </section>
 
   <section class="section about" id="sobre">
-    <div class="section__head"><h2 class="section__title">Sobre</h2></div>
-    <p class="about__text about__text--single">Sou designer multidisciplinar, brasileiro, a viver em Cascais. A dança, a música e o teatro são as minhas grandes inspirações, e é daí que vem o ritmo do meu trabalho. Comecei como estagiário na Record TV Europa e hoje trabalho lá como editor de vídeo e grafista, e também faço câmara. Estudo Design Gráfico e Multimédia na ETIC e crio motion, identidades visuais e experiências digitais para diferentes formatos e plataformas.</p>
+    <div class="section__head" data-reveal><h2 class="section__title">Sobre</h2></div>
+    <p class="about__text about__text--single" data-reveal="soft">Sou designer multidisciplinar, brasileiro, a viver em Cascais. A dança, a música e o teatro são as minhas grandes inspirações, e é daí que vem o ritmo do meu trabalho. Comecei como estagiário na Record TV Europa e hoje trabalho lá como editor de vídeo e grafista, e também faço câmara. Estudo Design Gráfico e Multimédia na ETIC e crio motion, identidades visuais e experiências digitais para diferentes formatos e plataformas.</p>
     <ul class="facts" aria-label="Ficha">
-      <li><span class="k">Base</span><span>Cascais, Portugal</span></li>
-      <li><span class="k">Formação</span><span>Design Gráfico e Multimédia, ETIC</span></li>
-      <li><span class="k">Ferramentas</span><span>After Effects, Premiere, Photoshop, Illustrator, Figma, Blender</span></li>
+      <li data-reveal><span class="k">Base</span><span>Cascais, Portugal</span></li>
+      <li data-reveal><span class="k">Formação</span><span>Design Gráfico e Multimédia, ETIC</span></li>
+      <li data-reveal><span class="k">Ferramentas</span><span>After Effects, Premiere, Photoshop, Illustrator, Figma, Blender</span></li>
     </ul>
   </section>
 
   <section class="section projects" id="projetos" data-pin aria-roledescription="carrossel" aria-label="Projetos">
   <div class="projects__pin">
-    <div class="section__head"><h2 class="section__title">Projetos</h2><span class="section__aside" data-count aria-live="polite">01 / 07</span></div>
+    <div class="section__head" data-reveal><h2 class="section__title">Projetos</h2><span class="section__aside" data-count aria-live="polite">01 / 07</span></div>
     <div class="track" tabindex="0" aria-label="Lista de projetos, deslize para o lado">
       <a class="card" href="cartoonito.html">
         <div class="card__img"><img src="assets/img/card-cartoonito-480.webp" srcset="assets/img/card-cartoonito-480.webp 480w, assets/img/card-cartoonito-800.webp 800w" sizes="(min-width:900px) 28vw, 84vw" width="480" height="600" alt="Mascote do Cartoonito animado sobre fundo azul"></div>
@@ -118,7 +121,7 @@
         <div class="card__cap"><div><div class="card__title">Ways of Seeing</div><span class="card__tag">Identidade gráfica</span></div><div class="card__meta">2024</div></div>
       </a>
     </div>
-    <div class="track-ctrl">
+    <div class="track-ctrl" data-reveal="fade">
       <div class="progress" aria-hidden="true"><span></span></div>
       <div class="arrows"><button type="button" class="arrow" data-prev aria-label="Projeto anterior">&#8592;</button><button type="button" class="arrow" data-next aria-label="Projeto seguinte">&#8594;</button></div>
     </div>
@@ -126,30 +129,30 @@
   </section>
 
   <section class="section skills" id="competencias">
-    <div class="section__head"><h2 class="section__title">Competências</h2></div>
+    <div class="section__head" data-reveal><h2 class="section__title">Competências</h2></div>
     <ul class="skills__list">
-      <li class="skill is-open">
+      <li class="skill is-open" data-reveal>
         <button type="button" class="skill__btn" aria-expanded="true" aria-controls="sk1"><span class="skill__n">01</span><span class="skill__name">Motion e audiovisual</span><span class="skill__plus" aria-hidden="true"></span></button>
         <div class="skill__panel" id="sk1"><div><div class="skill__inner">
           <p class="skill__desc">Motion graphics, animação 2D e grafismo para televisão, feitos por quem trabalha em broadcast todos os dias.</p>
           <img loading="lazy" src="assets/img/skill-motion-640.webp" width="640" height="480" alt="Vinheta Batwheels para o Cartoonito">
         </div></div></div>
       </li>
-      <li class="skill">
+      <li class="skill" data-reveal>
         <button type="button" class="skill__btn" aria-expanded="false" aria-controls="sk2"><span class="skill__n">02</span><span class="skill__name">Identidade visual e branding</span><span class="skill__plus" aria-hidden="true"></span></button>
         <div class="skill__panel" id="sk2"><div><div class="skill__inner">
           <p class="skill__desc">Sistemas de identidade coerentes, do logótipo à tipografia e à direção de arte.</p>
           <img loading="lazy" src="assets/img/skill-branding-640.webp" width="640" height="480" alt="Cartazes NABO numa fachada">
         </div></div></div>
       </li>
-      <li class="skill">
+      <li class="skill" data-reveal>
         <button type="button" class="skill__btn" aria-expanded="false" aria-controls="sk3"><span class="skill__n">03</span><span class="skill__name">Design digital</span><span class="skill__plus" aria-hidden="true"></span></button>
         <div class="skill__panel" id="sk3"><div><div class="skill__inner">
           <p class="skill__desc">Interfaces e experiências interativas, pensadas para quem as usa, do esboço ao protótipo.</p>
           <img loading="lazy" src="assets/img/skill-digital-640.webp" width="640" height="480" alt="App UNIAPY num telemóvel">
         </div></div></div>
       </li>
-      <li class="skill">
+      <li class="skill" data-reveal>
         <button type="button" class="skill__btn" aria-expanded="false" aria-controls="sk4"><span class="skill__n">04</span><span class="skill__name">Comunicação e marketing</span><span class="skill__plus" aria-hidden="true"></span></button>
         <div class="skill__panel" id="sk4"><div><div class="skill__inner">
           <p class="skill__desc">Campanhas, social media e peças promocionais com uma mensagem clara em cada formato.</p>
@@ -178,5 +181,7 @@
   </div>
 </footer>
 <script src="assets/main.js" defer></script>
+<script src="assets/pin.js" defer></script>
+<script src="assets/reveal.js" defer></script>
 </body>
 </html>
